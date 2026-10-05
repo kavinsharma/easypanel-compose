@@ -202,6 +202,7 @@ services:
   # Comment this if you using any external s3 compatible storage
   plane-minio:
     image: cgr.dev/chainguard/minio:latest
+    user: root
     command: server /export --console-address ":9090"
     deploy:
       replicas: 1
@@ -215,6 +216,7 @@ services:
   # Comment this if you already have a reverse proxy running
   proxy:
     image: artifacts.plane.so/makeplane/plane-proxy:${APP_RELEASE:-stable}
+    SITE_ADDRESS: ":80"
     environment:
       <<: *proxy-env
     deploy:
