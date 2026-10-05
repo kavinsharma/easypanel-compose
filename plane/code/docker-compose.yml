@@ -216,7 +216,6 @@ services:
   # Comment this if you already have a reverse proxy running
   proxy:
     image: artifacts.plane.so/makeplane/plane-proxy:${APP_RELEASE:-stable}
-    SITE_ADDRESS: ":80"
     environment:
       <<: *proxy-env
     deploy:
